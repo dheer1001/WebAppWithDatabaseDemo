@@ -1,4 +1,11 @@
 trigger: 'none' # will disable CI builds entirely
+- task: WhiteSource@20
+  inputs:
+    cwd: '$(Build.SourcesDirectory)'
+    extensions: '.dll'
+    checkPolicies: 'SEND_ALERTS'
+    projectRule: 'first'
+    projectName: '$(Build.Repository.Name)'
 
 pool:
   vmImage: 'windows-2019'
